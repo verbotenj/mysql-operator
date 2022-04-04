@@ -57,7 +57,12 @@ spec:
   {{- end }}
 {{- end }}
 
-{{- if .Values.initDB }}
+{{- if .Values.mycnf }}
+  mycnf: |
+{{ .Values.mycnf | indent 4}}
+{{- end }}
+
+{{- if .Values.initDB}}
   {{- if and (and .Values.initDB.dump .Values.initDB.dump.name) (and .Values.initDB.clone .Values.initDB.donorUrl) }}
     {{- fail "Dump and Clone are mutually exclusive" }}
   {{- end }}
